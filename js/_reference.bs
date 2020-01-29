@@ -1,0 +1,121 @@
+const storage = {
+  items: []
+}
+
+Object.defineProperty(storage, 'max', { readable: true, val: 5000 })
+
+let currentStorage = 'undefined'
+
+function storageUsed() {
+  if(currentStorage) {
+    return currentStorage
+  }
+  currentStorage = 0
+  for(const i = 0; i < storage.length(); i++) {
+    currentStorage += storage.items[i].weigth
+  }
+  return currentStorage
+}
+
+function add(item) {
+  if(storage.max - item.weight >= storageUsed) {
+    storage.items.add(item)
+    currentStorage += iten.weight
+  }
+}
+
+// Ex 0
+
+
+/**
+ * @typedef {Object} Item
+ * @property {number} weight 
+ * 
+ * @typedef {Object} Store
+ * @property {number} max
+ * @property {Item[]} items
+ */
+
+/** @type Store */
+
+
+// Ex 1
+
+function createArticle(name, price, stock = 0) {
+  if(typeof name === 'string') {
+    return {
+      name,
+      price: addVAT(price, 0.2),
+      stock
+    }
+  }
+}
+
+const article = createArticle('A new Smashing Book', 39.99, 100000)
+
+// Ex 2
+
+
+type Article = {
+  price: number,
+  vat: number,
+  title: string
+}
+
+type Customer = {
+  name: string,
+  address: string,
+  dateOfBirth: Date
+}
+
+type Order = {
+  articles: Article[],
+  customer: Customer
+}
+
+function totalSum(order: Order) {
+  
+}
+
+// Ex 3
+
+type User = string | number | {
+  name: string
+}
+
+function createUserId(user: User): string {
+  if(typeof user === 'string') {
+    return user
+  } else if(typeof user === 'number'){
+    return user.toString()
+  } else {
+    return user.name
+  }
+  return ''
+}
+
+// EX 4
+
+type Shape =
+    { kind: "circle", radius: number } |
+    { kind: "rectangle", w: number, h: number } |
+    { kind: "square", size: number };
+
+function assertNever(obj: never) {
+    throw new Error("Unexpected object");
+}
+
+function getArea(shape: Shape) {
+    switch (shape.kind) {
+        case "circle":
+            return Math.PI * shape.radius ** 2;
+        case "rectangle":
+            return shape.w * shape.h;
+        case "square":
+            return shape.size ** 2;
+    }
+    assertNever(shape);
+}
+
+const shape: Shape = { kind: "circle", radius: 10 };
+const area = getArea(shape);

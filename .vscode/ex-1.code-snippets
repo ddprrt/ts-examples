@@ -1,0 +1,39 @@
+{
+	"ex-1": {
+		"prefix": "ex-1",
+		"body": [
+			"/**",
+			" * @typedef {Object} Item",
+			" * @property {number} weight ",
+			" * ",
+			" * @typedef {Object} Store",
+			" * @property {number} max",
+			" * @property {Item[]} items",
+			" */"
+		],
+		"description": "ex-1"
+	},
+	"ex-2": {
+		"prefix": "ex-2",
+		"body": [
+			"/** @type Store */"
+		],
+		"description": "ex-2"
+	},
+	"ex-3": {
+		"prefix": "ex-3",
+		"body": [
+			"",
+			"function createArticle(name, price, stock = 0) {",
+			"  if(typeof name === 'string') {",
+			"    return {",
+			"      name,",
+			"      price: addVAT(price, 0.2),",
+			"      stock",
+			"    }",
+			"  }",
+			"}"
+		],
+		"description": "ex-3"
+	}
+}
