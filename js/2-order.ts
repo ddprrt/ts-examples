@@ -18,3 +18,29 @@ const defaultOrder = {
   }
 }
 
+type Article = {
+  price: number,
+  vat: number,
+  title: string
+}
+
+type Customer = {
+  name: string,
+  address: string, 
+  dateOfBirth: Date
+}
+
+type Order = {
+  articles: Article[],
+  customer: Customer
+}
+
+function totalSum(order: Order) {
+  let sum = 0;
+  for(let i = 0; order.articles.length; i++) {
+    sum += order.articles[i].price * order.articles[i].vat
+  }
+  return sum;
+}
+
+totalSum(defaultOrder)
